@@ -12,6 +12,7 @@ class _MyPhoneState extends State<MyPhone> {
   Widget build(BuildContext context) {
     return Scaffold(
         body: Container(
+      margin: EdgeInsets.only(left: 25, right: 25),
       alignment: Alignment.center,
       child: SingleChildScrollView(
         child: Column(
@@ -21,19 +22,28 @@ class _MyPhoneState extends State<MyPhone> {
               'Phone verification',
               style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
+            SizedBox(
+              height: 10,
+            ),
             Text(
               'Before we get started, please enter your Mobile number.',
               style: TextStyle(fontSize: 14),
               textAlign: TextAlign.center,
             ),
-            ElevatedButton(
-              onPressed: () {},
-              child: Text('Send OTP'),
-              style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.yellow[700],
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10))),
-            )
+            SizedBox(
+              height: 20,
+            ),
+            SizedBox(
+                height: 50,
+                width: double.infinity,
+                child: ElevatedButton(
+                  onPressed: () {},
+                  child: Text('Send OTP'),
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.yellow[700],
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10))),
+                )),
           ],
         ),
       ),
