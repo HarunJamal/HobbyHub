@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class MyPhone extends StatefulWidget {
   const MyPhone({super.key});
@@ -60,6 +61,11 @@ class _MyPhoneState extends State<MyPhone> {
                     child: TextField(
                       controller: countrycode,
                       decoration: InputDecoration(border: InputBorder.none),
+                      keyboardType: TextInputType.number,
+                      inputFormatters: [
+                        FilteringTextInputFormatter.allow(RegExp(r'\+\d{2}')),
+                        LengthLimitingTextInputFormatter(3)
+                      ],
                     ),
                   ),
                   Text(
@@ -71,6 +77,10 @@ class _MyPhoneState extends State<MyPhone> {
                     decoration: InputDecoration(
                         border: InputBorder.none, hintText: 'Phone'),
                     keyboardType: TextInputType.phone,
+                    inputFormatters: [
+                      FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
+                      LengthLimitingTextInputFormatter(10)
+                    ],
                   ))
                 ],
               ),
@@ -82,7 +92,9 @@ class _MyPhoneState extends State<MyPhone> {
                 height: 50,
                 width: double.infinity,
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pushNamed(context, 'otp');
+                  },
                   child: Text('Send OTP'),
                   style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.yellow[700],
