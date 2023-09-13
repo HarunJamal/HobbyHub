@@ -8,6 +8,14 @@ class MyPhone extends StatefulWidget {
 }
 
 class _MyPhoneState extends State<MyPhone> {
+  TextEditingController countrycode = TextEditingController();
+  @override
+  void initState() {
+    // TODO: implement initState
+    countrycode.text = "+91";
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,8 +26,12 @@ class _MyPhoneState extends State<MyPhone> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            Image.asset('assets/dudehiking.png', width: 150, height: 150),
+            SizedBox(
+              height: 25,
+            ),
             Text(
-              'Phone verification',
+              'Register Mobile Number',
               style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
             SizedBox(
@@ -29,6 +41,39 @@ class _MyPhoneState extends State<MyPhone> {
               'Before we get started, please enter your Mobile number.',
               style: TextStyle(fontSize: 14),
               textAlign: TextAlign.center,
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Container(
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  border: Border.all(
+                    width: 1,
+                    color: Colors.grey,
+                  )),
+              child: Row(
+                children: [
+                  SizedBox(width: 10),
+                  SizedBox(
+                    width: 40,
+                    child: TextField(
+                      controller: countrycode,
+                      decoration: InputDecoration(border: InputBorder.none),
+                    ),
+                  ),
+                  Text(
+                    "|",
+                    style: TextStyle(fontSize: 30, color: Colors.grey),
+                  ),
+                  Expanded(
+                      child: TextField(
+                    decoration: InputDecoration(
+                        border: InputBorder.none, hintText: 'Phone'),
+                    keyboardType: TextInputType.phone,
+                  ))
+                ],
+              ),
             ),
             SizedBox(
               height: 20,
